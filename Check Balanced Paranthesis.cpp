@@ -1,58 +1,51 @@
-// CPP program to check for balanced parenthesis.
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
-// function to check if paranthesis are balanced 
-bool checkBalanced(string s){
-	
+#define ll long long
+
+string isBalanced(string str)
+{
     stack<char> st;
-    
-    // Traversing the expression 
-    for(int i=0;i<s.length();i++){
-        if(s[i]=='(' || s[i]=='[' || s[i]=='{'){
-            st.push(s[i]);
-        }
-        else if(s[i]==')'){
-            if(st.empty() || st.top()!='('){
-                return false;
+    for (auto c : str)
+    {
+        switch (c)
+        {
+        case '{':
+        case '[':
+        case '(':
+            st.push(c);
+            break;
+        case '}':
+            if (st.empty() || st.top() != '{')
+            {
+                return "Not Balanced";
             }
-            else{
-                st.pop();
+            st.pop();
+            break;
+        case ']':
+            if (st.empty() || st.top() != '[')
+            {
+                return "Not Balanced";
             }
-        }
-        else if(s[i]=='}'){
-            if(st.empty() || st.top()!='{'){
-                return false;
+            st.pop();
+            break;
+        case ')':
+            if (st.empty() || st.top() != '(')
+            {
+                return "Not Balanced";
             }
-            else{
-                st.pop();
-            }
-        }
-        else if(s[i]==']'){
-            if(st.empty() || st.top()!='['){
-                return false;
-            }
-            else{
-                st.pop();
-            }
+            st.pop();
+            break;
         }
     }
-    
-    // If some chars still left in stack after traversing, expression must not be balanced
-    if(!st.empty()){
-        return false;
-    }
-    
-    return true;
+    return (st.empty() ? "Balanced" : "Not Balanced");
 }
+
 int main()
 {
-	string s;
-    cin>>s;
-    if(checkBalanced(s)){
-        cout<<"balanced"<<endl;
-    }
-    else{
-        cout<<"not balanced"<<endl;
-    }
+
+    string s;
+    cin >> s;
+    cout << isBalanced(s) << endl;
+    return 0;
 }
