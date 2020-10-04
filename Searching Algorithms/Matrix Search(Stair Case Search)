@@ -1,0 +1,38 @@
+QUESTION :
+_______________________
+Given an n x m matrix, where every row and column is sorted in increasing order, and a number x . Find if element x is present in the matrix or not.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+SOLUTION:
+________________________
+#include<bits/stdc++.h>
+using namespace std;
+bool stairCase(int a[][1000],int n, int m,int key){
+	int i = 0;
+	int j = m-1;                                         // since both rows and column are sorted start from the last column index of uppermost row
+	while(j>=0 && i<n){
+		if(a[i][j]==key)
+		return true;
+		if(a[i][j]>key)                                    // Check if the required key is smaller or greater
+		j--;                                               // if smaller move left
+		else                                               // if greater move down as row and columns are sorted in increasing order
+		i++;
+	}return false;	
+	
+}
+int main() {
+	int n , m;
+	cin>>n>>m;
+	int a[1000][1000];
+	for(int i=0;i<n;i++){
+		for(int j=0;j<m;j++){
+			cin>>a[i][j];
+		}
+	}
+	int key;
+	cin>>key;
+	int y;
+	y= stairCase(a,n,m,key);
+	cout<<y;
+
+	return 0;
+}

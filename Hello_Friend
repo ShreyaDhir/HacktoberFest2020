@@ -1,0 +1,4 @@
+//C#! You can of course replace the name of the Friend to any name you want! This is just a variable:) 
+string myFriend = "Yeena";
+//this prints out our message to our friend. Text "Hello" and adds the variable we declared earlier! Pretty neat stuff! 
+Console.WriteLine("Hello " + myFriend);
