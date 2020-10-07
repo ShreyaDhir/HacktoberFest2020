@@ -1,29 +1,43 @@
 #include <stdio.h>
-int main() {
-    char operator;
-    double first, second;
-    printf("Enter an operator (+, -, *,): ");
-    scanf("%c", &operator);
-    printf("Enter two operands: ");
-    scanf("%lf %lf", &first, &second);
+#include <iostream>
+#include <stdlib.h>
+using namespace std;
+int main()
+{
+    int num1, num2, result;
+    char op;
 
-    switch (operator) {
-    case '+':
-        printf("%.1lf + %.1lf = %.1lf", first, second, first + second);
-        break;
-    case '-':
-        printf("%.1lf - %.1lf = %.1lf", first, second, first - second);
-        break;
-    case '*':
-        printf("%.1lf * %.1lf = %.1lf", first, second, first * second);
-        break;
-    case '/':
-        printf("%.1lf / %.1lf = %.1lf", first, second, first / second);
-        break;
-        // operator doesn't match any case constant
-    default:
-        printf("Error! operator is not correct");
+    cout << "enter first number: ";
+    cin >> num1;
+    cout << "enter 2nd number: ";
+    cin >> num2;
+    cout << "enter operator(+,-,*,/): ";
+    cin >> op;
+
+    if (op == '+')
+    {
+        result = num1 + num2;
+
+    }
+    else if (op == '-')
+    {
+        result = num1 - num2;
+    }
+    else if (op == '/')
+    {
+        result = num1 / num2;
+    }
+    else if (op == '*')
+    {
+        result = num1 * num2;
+
+    }
+    else
+    {
+        cout << "invalid operator";
     }
 
+    cout << result;
     return 0;
 }
+
