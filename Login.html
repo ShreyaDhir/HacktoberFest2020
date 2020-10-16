@@ -1,0 +1,49 @@
+<html>
+<head>
+    <title>Login</title>
+
+    <link href="https://unpkg.com/bootstrap@4.1.1/dist/css/bootstrap.css" rel="stylesheet">
+    <style>
+        .footer{
+    position:absolute;
+    bottom: 0;
+    width: 100%;
+    height: 40px;
+    background-color: #222222;
+}
+    </style>
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div><a routerLink="/login" class="navbar-brand">Gadget Surge</a></div>
+
+        <ul class="navbar-nav">
+            <li><a *ngIf="Service.isUserLoggedIn()" routerLink="/welcome/Rutam" class="nav-link">Home</a></li>
+            <li><a *ngIf="Service.isUserLoggedIn()" routerLink="/todos" class="nav-link">Todos</a></li>
+        </ul>
+
+        <ul class="navbar-nav navbar-collapse justify-content-end">
+            <li><a *ngIf="!(Service.isUserLoggedIn())" routerLink="/login" class="nav-link">Login</a></li>
+            <li><a *ngIf="Service.isUserLoggedIn()" routerLink="/logout" class="nav-link">Logout</a></li>
+        </ul>
+    </nav>
+</header>
+<div class="container">
+    <h1>Login</h1>
+
+    Username : <input type="text" name="username" [(ngModel)]="username" >
+    Password : <input type="password" name="password" [(ngModel)]="password" >
+    
+    
+    <button class="button btn-success" (click)=handleLogin()>Login</button>
+    </div>
+    </div>
+</div>
+<footer class="footer">
+    <div class="container">
+       <span class="text-muted">All rights reserved 2020 Gadget Surge</span> 
+    </div>
+</footer>
+</body>
+</html>
