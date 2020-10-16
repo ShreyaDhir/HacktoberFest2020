@@ -1,0 +1,117 @@
+#include<bits/stdc++.h>
+using namespace std;
+//#include <ext/pb_ds/assoc_container.hpp>
+#include <ext/pb_ds/tree_policy.hpp>
+using namespace __gnu_pbds;
+
+#define ll long long
+#define fast ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+#define test int t; cin>>t; while(t--)
+#define pb push_back
+#define mp(a,b) make_pair(a,b)
+#define f0(i,n) for( ll i = 0; i < ( n ); i ++)
+#define f1(i,n) for(i = 1; i <= ( n ); i ++)
+#define f(i,m,n) for(auto i = ( m ); i <= ( n ); i ++)
+#define nl cout<<"\n"
+#define  mod 1000000007
+#define fi first
+#define se second
+#define all(a) a.begin(),a.end()
+#define rall(v) v.rbegin(), v.rend()
+#define SZ(x) ((ll)x.size())
+#define mem(a, b) memset(a, b, sizeof(a));
+#define make_graph(k) int x,y; f0(i,k){cin>>x>>y; adj[x].pb(y); /*adj[y].pb(x);*/}
+#define dekh cout<<"dekh"
+
+#define o_set tree<ll, null_type, less<ll>, rb_tree_tag, tree_order_statistics_node_update>
+#define o_setpll tree<pair<ll,ll>, null_type, less<pair<ll,ll>>, rb_tree_tag, tree_order_statistics_node_update>
+typedef vector<ll> vl;
+
+
+
+
+ll Pow(ll a, ll b, ll m){
+    if(b==0)return 1;
+    if(b%2==0){
+        ll x = a*a;
+        x%=m;
+        return Pow(x,b/2,m);
+    }
+    return (a*Pow(a,b-1,m))%m;
+}
+
+
+int main()
+{
+    fast
+    test
+    {
+        ll i,j,n;
+        cin>>n;
+        vl arr(n);
+        ll sum=0;
+        f0(i,n){cin>>arr[i];sum+=arr[i];}
+        if(sum==0){cout<<"NO";nl;continue;}
+        sort(rall(arr));
+        vl v; vl ans;
+        sum=0;
+       // f0(i,n)cout<<arr[i]<<" ";nl;
+        f0(i,n)
+        {
+            sum+=arr[i];
+           // cout<<sum<<" "<<arr[i];nl;
+            if(sum==0){v.pb(arr[i]);sum-=arr[i];}
+            else ans.pb(arr[i]);
+        }
+      //  f0(i,v.size())cout<<v[i]<<" ";nl;
+        //f0(i,ans.size())cout<<ans[i]<<" ";nl;
+        vl cop ; cop = arr;
+        sort(all(cop));
+        ll boomy = 1;ll summy = 0;
+        f0(i,n)
+        {
+            summy+=cop[i];
+            if(summy==0){boomy=0;break;}
+        }
+        if(boomy)
+        {
+            cout<<"YES";nl;
+            f0(i,n){cout<<cop[i]<<" ";}nl;continue;
+        }
+
+        ll flag = 0;
+        if(v.size()==0)
+        {
+            flag=1;cout<<"YES";nl;
+            f0(i,n)cout<<arr[i]<<" ";
+        }
+            if(flag){nl;continue;}
+         if(arr[n-1]==v[v.size()-1])
+        {
+            f0(i,ans.size())
+            {
+                v.pb(ans[i]);
+            }
+                cout<<"YES";nl;
+                     for(auto x : v)
+                {
+                    cout<<x<<" ";
+                }nl;
+        }
+        else {
+                f0(i,v.size())
+                {
+                    ans.pb(v[i]);
+                }
+                cout<<"YES";nl;
+                 for(auto x : ans)
+                {
+                    cout<<x<<" ";
+                }nl;
+        }
+
+
+
+    }
+
+}
