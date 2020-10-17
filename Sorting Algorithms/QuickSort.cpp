@@ -1,17 +1,8 @@
 
 #include<iostream>
 #include<cstdlib>
-
+#include<algorithm>
 using namespace std;
-
-
-void swap(int *a, int *b)
-{
-	int temp; 
-	temp = *a;
-	*a = *b;
-	*b = temp;
-}
 
 int Partition(int a[],int start,int end)
 {
@@ -27,7 +18,7 @@ int Partition(int a[],int start,int end)
             index++;
         }
     }
-    swap(&a[pivot], &a[index]);
+    std::swap(a[pivot], a[index]);
     return index;
 }
 
