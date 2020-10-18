@@ -1,0 +1,18 @@
+def sentinel_search(arr, num, a):
+    last = arr[num - 1]
+    arr[num - 1] = a
+    i = 0
+
+    while (arr[i] != a):
+        i += 1
+    arr[num - 1] = last
+
+    if ((i < num - 1) or (a == arr[num - 1])):
+        print("The student with roll no. ", a, "was present for program.")
+    else:
+        print("The student with roll no. ", a, "was NOT present for program.")
+
+arr=list(map(int,input("enter array :").rstrip().split()))
+num=len(arr)
+print(arr)
+sentinel_search(arr, num, a)
