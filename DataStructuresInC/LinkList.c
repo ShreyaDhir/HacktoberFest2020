@@ -17,7 +17,6 @@ int main() {
 		printf(" 5. Display\n");
 		printf(" 6. Count Nodes\n");
 		printf(" 7. Search a Value\n");
-		// printf(" 8. DeleteAtKth\n");
 		printf(" 8. Reverse List\n");
 		printf(" 9. Sort the List List\n");
 		printf(" 10. Exit\n\n");
